@@ -23,7 +23,7 @@ end
 # implementing closures using proc
  def closure
    n = 0
-   return Proc.new { "n is now #{n += 1}"}
+   return Proc.new { "n was #{n}, n is now #{n += 1}"}
  end
 
   a = closure
