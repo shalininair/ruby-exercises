@@ -54,7 +54,59 @@ end
    return "returning from inside the method"
   end
   puts ret_proc
- 
+
+  def ret_proc
+    Proc.new
+  end
+  proc = ret_proc { "a proc without an attached block can be called from a method call with a block" }
+  puts proc.call
+  puts "proc has #{proc.arity} mandatory parameters, proc has #{0 if proc.parameters.empty?} no. of parameters and is defined in #{proc.source_location}"
+
+  class Tea
+
+    def initialize
+        puts "There are so many tea's to taste. Which of them would you like to try?"      
+    end
+
+    def drink &tea_name
+      tea_name.call(self) 
+    end
+
+    def oolong
+        "oolong is very tasty."
+    end
+
+    def green_tea
+        "green tea is very healthy."
+    end
+
+    def earl_grey
+        "earl grey is very refreshing."
+    end
+  end 
+  
+  puts "Implementing Proc#symbol"
+  tea = Tea.new
+  puts tea.drink(&:oolong)
+  puts tea.drink(&:green_tea)
+  puts tea.drink(&:earl_grey)
+
+
+  def ret_proc(arg1)
+    
+    case arg1.call
+     when 2
+       puts "The proc evaluates to a number and has value #{arg1.call}"
+     when 'ac'
+       puts "The proc evaluates to a string and has value #{arg1.call}"
+     end 
+
+  end
+
+   proc = Proc.new { 1 + 1 }
+   ret_proc(proc)
+   proc = Proc.new { 'a' + 'c' }
+   ret_proc(proc)
  
   
 
