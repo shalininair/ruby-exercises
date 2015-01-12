@@ -1,6 +1,6 @@
 # All about procs
 # Instantiating procs
-print "A proc is an instance of the object ", Proc.new {}.class, " and has an object id e.g. :" , Proc.new {}.object_id, "\n"
+print "A proc is an instance of the object ", Proc.new {}.class, " and has an object id. In this case it's " , Proc.new {}.object_id, "\n"
 proc = Proc.new { puts "A proc object is instantiated by passing a block to Proc#new"}
 proc.call
 proc = Proc.new { puts "A proc can be assigned to a variable and is called using proc#call"}
@@ -60,7 +60,7 @@ end
   end
   proc = ret_proc { "a proc without an attached block can be called from a method call with a block" }
   puts proc.call
-  puts "proc has #{proc.arity} mandatory parameters, proc has #{0 if proc.parameters.empty?} no. of parameters and is defined in #{proc.source_location}"
+  puts "This proc has #{proc.arity} mandatory parameters, proc has #{0 if proc.parameters.empty?} no. of parameters and is defined in #{proc.source_location}"
 
   class Tea
 
@@ -102,7 +102,8 @@ end
      end 
 
   end
-
+   
+   puts "Using a proc in a case statement" 
    proc = Proc.new { 1 + 1 }
    ret_proc(proc)
    proc = Proc.new { 'a' + 'c' }
