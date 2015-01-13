@@ -57,6 +57,6 @@ ret_lambda
  puts "This lambda has #{l1.arity} mandatory parameters and in total #{l1.parameters.count} parameters and is defined in #{l1.source_location}"
  l1 = lambda { |arg1, arg2 , arg3 = :three, arg4 = :four, arg5| "arg1 is #{arg1}, arg2 is #{arg2}, arg3 is #{arg3}, arg4 is #{arg4}, arg5 is #{arg5}" }
  puts "This lambda has #{l1.arity} mandatory parameters and in total #{l1.parameters.count} parameters and is defined in #{l1.source_location}"
- puts "The arity is wrong as there are 3 mandatory parameters viz. #{l1.parameters}"
+ puts "The arity #{l1.arity} is wrong as there are 3 mandatory parameters viz. #{l1.parameters}"
  puts l1.call(1,2,3)
 
