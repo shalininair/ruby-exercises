@@ -1,12 +1,12 @@
 # All about procs
 # Instantiating procs
-print "A proc is an instance of the object ", Proc.new {}.class, " and has an object id. In this case it's " , Proc.new {}.object_id, "\n"
+print "A proc is an instance of the class ", Proc.new {}.class, " and has an object id. In this case it's " , Proc.new {}.object_id, "\n"
 proc = Proc.new { puts "A proc object is instantiated by passing a block to Proc#new"}
 proc.call
 proc = Proc.new { puts "A proc can be assigned to a variable and is called using proc#call"}
 proc.call
 
-# implementing higher-order functions using procs
+# implements higher-order functions in ruby
 def pass_proc1 (proc1, proc2, number, proc3)
    proc1.call
    proc2.call
@@ -20,12 +20,13 @@ end
  number = 3
  proc3 = Proc.new {puts "A proc need not be the last argument to a method, unlike a block"}
  pass_proc1(proc1, proc2, number, proc3).call
-# implementing closures using proc
+# implements closures in Ruby
  def closure
    n = 0
    return Proc.new { "n was #{n}, n is now #{n += 1}"}
  end
-
+  
+  puts "A proc carries the scope it was defined in with it, implementing closures in Ruby"
   a = closure
   puts "assigning the method, outputting the proc, to a variable 'a'"
   puts "calling the method, outputting the proc, from 'a' results in: ", a.call
@@ -38,8 +39,8 @@ end
   puts "calling the method, outputting the proc, from 'b' results in: ", b.call
   puts "calling the method, outputting the proc, from 'b' results in: ", b.call
   puts "calling the method, outputting the proc, as a standalone results in: ", closure.call
-  puts "a proc carries the scope it is defined in with it, implementing closures in Ruby"
-# passing arguments to a proc
+  
+# uses non-rigid parameter handling aka argument semantics while handling parameters/ arguments 
   arg_proc = Proc.new {|arg1, arg2, arg3| "arg1 is #{arg1}, arg2 is #{arg2}, arg3 is #{arg3}"} 
   puts "passing 3 arguments to a proc call expecting 3 arguments results in:", arg_proc.call( 1,2,3) 
   puts "A lambda would error out in the following scenarios"
@@ -49,7 +50,7 @@ end
   puts "passing 2 arrays as arguments to a proc expecting 3 arguments results in:", arg_proc.call([1,2,:a,:b], [:c, :d])
 # proc handles return differently
   def ret_proc 
-   proc = Proc.new { return "a return from inside the proc returns not only from the proc, but the method itself, unlike a lambda."}
+   proc = Proc.new { return "a return from inside the proc returns not only from the proc, but the enclosing method itself, unlike a lambda."}
    proc.call
    return "returning from inside the method"
   end
