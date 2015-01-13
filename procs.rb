@@ -46,6 +46,7 @@ end
   puts "A lambda would error out in the following scenarios"
   puts "passing 2 arguments to a proc call expecting 3 arguments results in:", arg_proc.call( 1,2)
   puts "passing 4 arguments to a proc call expecting 3 arguments results in:", arg_proc.call( 1,2,3,4)
+  puts "A proc unpacks the array, if it is the only parameter passed."
   puts "passing 1 array as an argument to a proc expecting 3 arguments results in:", arg_proc.call([1,2,:a,:b])
   puts "passing 2 arrays as arguments to a proc expecting 3 arguments results in:", arg_proc.call([1,2,:a,:b], [:c, :d])
 # proc handles return differently
