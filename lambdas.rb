@@ -19,7 +19,7 @@
 
  # implements closures
  def closure
-    n = 0
+    n = -25
     l1 = lambda { "n was #{n}, and now is #{n += 1}"}
  end
  puts "A lambda carries the scope it was defined in with it, implementing closures in Ruby"
@@ -41,7 +41,7 @@
 def ret_lambda
  l1 = lambda{ return "return from inside the lambda returns to the enclosing method, implementing anonymous functions in Ruby."}
  puts l1.call
- return true
+ return "This code will not be executed."
 end
 ret_lambda
  # uses rigid parameter handling aka method semantics while handling parameters 

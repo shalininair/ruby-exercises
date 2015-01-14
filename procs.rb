@@ -22,7 +22,7 @@ end
  pass_proc1(proc1, proc2, number, proc3).call
 # implements closures in Ruby
  def closure
-   n = 0
+   n = -25
    return Proc.new { "n was #{n}, n is now #{n += 1}"}
  end
   
