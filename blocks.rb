@@ -33,17 +33,34 @@ end
 ret_block { print "A block can be passed to a method even if the method definition does not have any arguments,"}
 ret_block { puts "in which case the block can only be executed with a yield."}
 
-# implement closures in ruby
-# #array = [1,2,3,4]
-# def closure
-#  n = -1
-#  puts "n was #{n} and is now #{n += 5}"
-#  puts yield
-#  puts yield
-# puts yield
-#end
-#closure { n += 1 }
- 
+def closure
+ x = 100
+ yield
+ yield
+ yield 
+end
+puts "A block carries the scope it was defined in with it, implementing closures in Ruby"
+x = 5
+puts "Value of x before block is #{x}"
+closure { x += 1}
+puts "Value of x after block is #{x}"
 
-# parameter handling rigid (method semantics)/ non-rigid (argument semantics)
+closure do
+ y = 0
+ puts defined?(y) ? "Yes, y is defined in the block and is #{y}. y is now changed to #{y += 1}" : "No, y is not defined in the block."
+ puts defined?(x) ? "Yes, x, defined in main, is accessed in the block and is #{x}. x is now changed to #{x += 1}" : "No, x, defined in main, is not accessed in the block."
+end 
+puts defined?(y) ? "Yes, y is defined in main." : "No, y is not defined in main."
 
+# parameter handling non-rigid (argument semantics)
+def ret_block
+ x = 1
+ y = 2
+ z = 3
+ yield(x,y,z)
+ yield(x)
+ yield(x,x,x,x)
+ yield([x,y,z])
+end
+puts "blocks use non-rigid parameter handling aka argument semantics for handling parameters."
+ret_block {|num1,num2,num3| puts "num1 is #{num1}, num2 is #{num2}, num3 is #{num3}"}
