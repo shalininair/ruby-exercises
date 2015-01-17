@@ -12,7 +12,7 @@ class Car
  private
  def upgrade(model, year)
    @make[model] = year
-   "#{model} upgraded to #{year}"
+   "#{model} upgraded to #{year}."
  end
 end
 
