@@ -1,5 +1,5 @@
-#Dynamic dispatch aka send
-puts "Dynamc dispatch send allows us to send messages on an object, in this case Fixnum#+"
+#send
+puts "send allows us to send messages on an object, in this case Fixnum#+"
 puts 1.send(:+, 2)
 
 class Car
