@@ -13,7 +13,7 @@ class AboutNil < Neo::Koan
       nil.some_method_nil_doesnt_know_about
     rescue Exception => ex
       # What exception has been caught?
-      puts ex.class #=> Class
+      #puts ex.class #=> Class
       #puts ex.message #=> some_method_nil_doesnt_know_about
       assert_equal NoMethodError, ex.class
 
@@ -34,7 +34,9 @@ class AboutNil < Neo::Koan
     #    obj.nil?
     # or
     #    obj == nil
-    # Why?
+    # Why? 
+    #=> obj == nil is more efficient. Object#nil? method does obj == nil inside it's code and so is a little slower.
+    #=> obj.nil? is more reader friendly.
   end
 
 end
