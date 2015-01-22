@@ -59,4 +59,3 @@ ret_lambda
  puts "This lambda has #{l1.arity} mandatory parameters and in total #{l1.parameters.count} parameters and is defined in #{l1.source_location}"
  puts "The arity #{l1.arity} is wrong as there are 3 mandatory parameters viz. #{l1.parameters}"
  puts l1.call(1,2,3)
-
