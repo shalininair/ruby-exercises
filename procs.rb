@@ -111,5 +111,3 @@ end
    proc = Proc.new { 'a' + 'c' }
    ret_proc(proc)
  
-  
-
