@@ -120,3 +120,4 @@ class AboutHashes < Neo::Koan
     assert_equal [], hash[:three]
   end
 end
+
