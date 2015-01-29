@@ -37,7 +37,8 @@ class AboutObjects < Neo::Koan
     assert_equal 201, 100.object_id
 
     # THINK ABOUT IT:
-    # What pattern do the object IDs for small integers follow? #=> (Fixnum value * 2) + 1
+    # What pattern do the object IDs for small integers follow? 
+    #=> (Fixnum value * 2) + 1
   end
 
   def test_clone_creates_a_different_object
