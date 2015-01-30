@@ -15,6 +15,26 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  # soluton works
+  # if a == b && a == c
+  #  return :equilateral 
+  # elsif ( b == c && a != b ) || (a == b && a != c) || (a == c && a != b)
+  #  return :isosceles    
+  # else
+  #  return :scalene
+  # end
+  # refactored to an elegant solution
+  # case [a,b,c].uniq.size
+  # when 1 
+  #     :equilateral 
+  # when 2
+  #     :isosceles 
+  # else
+  #     :scalene
+  # end
+  #refactored again
+ [:equilateral, :isosceles, :scalene].fetch([a,b,c].uniq.size - 1)    
+
 end
 
 # Error class used in part 2.  No need to change this code.
