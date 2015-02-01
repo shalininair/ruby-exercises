@@ -33,8 +33,13 @@ def triangle(a, b, c)
   #     :scalene
   # end
   #refactored again
+ 
+ raise TriangleError if [a,b,c].min <= 0
+ array = [a,b,c].sort
+ raise TriangleError if array[2] >= (array[1] + array[0]) 
+ 
  [:equilateral, :isosceles, :scalene].fetch([a,b,c].uniq.size - 1)    
-
+  
 end
 
 # Error class used in part 2.  No need to change this code.
