@@ -10,11 +10,11 @@ class AboutToStr < Neo::Koan
 
   def test_to_s_returns_a_string_representation
     not_like_a_string = CanNotBeTreatedAsString.new
-    assert_equal __, not_like_a_string.to_s
+    assert_equal "non-string-like", not_like_a_string.to_s
   end
 
   def test_normally_objects_cannot_be_used_where_strings_are_expected
-    assert_raise(___) do
+    assert_raise(TypeError) do
       File.exist?(CanNotBeTreatedAsString.new)
     end
   end
@@ -33,14 +33,21 @@ class AboutToStr < Neo::Koan
 
   def test_to_str_also_returns_a_string_representation
     like_a_string = CanBeTreatedAsString.new
-    assert_equal __, like_a_string.to_str
+    assert_equal "string-like", like_a_string.to_str
   end
 
   def test_to_str_allows_objects_to_be_treated_as_strings
-    assert_equal __, File.exist?(CanBeTreatedAsString.new)
+    assert_equal false, File.exist?(CanBeTreatedAsString.new)
   end
 
   # ------------------------------------------------------------------
+  #=> to_s is a loose conversion method , while to_str is a strict conversion method
+  #=> Loose conversion methods viz. to_s, to_a, etc. are used to convert an object to another class, 
+  #=> but the loosely converted object cannot necessarily act like an object of the new class
+  #=> They are often called explicitly.
+  #=> Strict conversion methods viz. to_ary, to_str are used when an object should act like another type of object
+  #=> They are called implicitly by methods to convert arguments into expected type of parameters.
+  #=> They should be used in APIs expecting specific types of parameter
 
   def acts_like_a_string?(string)
     string = string.to_str if string.respond_to?(:to_str)
@@ -48,7 +55,7 @@ class AboutToStr < Neo::Koan
   end
 
   def test_user_defined_code_can_check_for_to_str
-    assert_equal __, acts_like_a_string?(CanNotBeTreatedAsString.new)
-    assert_equal __,  acts_like_a_string?(CanBeTreatedAsString.new)
+    assert_equal false, acts_like_a_string?(CanNotBeTreatedAsString.new)
+    assert_equal true,  acts_like_a_string?(CanBeTreatedAsString.new)
   end
 end
