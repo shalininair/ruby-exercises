@@ -48,6 +48,7 @@ class AboutToStr < Neo::Koan
   #=> Strict conversion methods viz. to_ary, to_str are used when an object should act like another type of object
   #=> They are called implicitly by methods to convert arguments into expected type of parameters.
   #=> They should be used in APIs expecting specific types of parameter
+  #=> http://pivotallabs.com/messages-not-types-exploring-rubys-conversion-protocols/
 
   def acts_like_a_string?(string)
     string = string.to_str if string.respond_to?(:to_str)
